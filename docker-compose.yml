@@ -1,0 +1,36 @@
+version: "2"
+networks:
+  sprc:
+    driver : bridge
+
+services:
+  app:
+    build: ./app
+    ports:
+      - "5000:5000"
+    links:
+      - db
+    networks:
+      - sprc
+
+  db:
+    image: mysql:5.7
+    ports:
+      - "32000:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/:ro
+    networks:
+      - sprc
+
+  admin:
+    build: ./admin
+    networks:
+      - sprc
+
+  client:
+    build: ./client
+    networks:
+      - sprc
+

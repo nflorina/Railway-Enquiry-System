@@ -1,36 +1,46 @@
-version: "2"
+version: "3.7"
 networks:
-  sprc:
-    driver : bridge
+  mynetwork:
+    driver: bridge
+
+volumes:
+  mysql_db:
 
 services:
-  app:
-    build: ./app
-    ports:
-      - "5000:5000"
-    links:
-      - db
-    networks:
-      - sprc
-
   db:
+    networks:
+      mynetwork:
     image: mysql:5.7
     ports:
       - "32000:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
     volumes:
-      - ./db:/docker-entrypoint-initdb.d/:ro
+      - ./db:/docker-entrypoint-initdb.d/:rw
+      - mysql_db:/var/lib/mysql
+
+  app:
     networks:
-      - sprc
+      mynetwork:
+    image: nflorina/idp-backend-server
+    links:
+      - db
+    ports:
+      - "5000:5000"
 
   admin:
-    build: ./admin
     networks:
-      - sprc
+      mynetwork:
+    image: nflorina/idp-admin
+    links:
+      - db
+    ports:
+      - "5100:5000"
 
   client:
-    build: ./client
     networks:
-      - sprc
+      mynetwork:
+    image: nflorina/idp-client
+    ports:
+      - "8080:80"
 

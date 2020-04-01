@@ -1,4 +1,7 @@
 # idp
 Application similar to "CFR Calatori"
 
-Rularea serviciilor: 
+#Rularea serviciilor: 
+## ./main_service.sh
+## ./admin.sh
+## ./client.sh

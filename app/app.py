@@ -12,7 +12,8 @@ config = {
     'password': 'root',
     'host': 'db',
     'port': '3306',
-    'database': 'airplaneservice'
+    'database': 'airplaneservice',
+    'auth_plugin':'mysql_native_password'
 }
 
 bought_bookings = []

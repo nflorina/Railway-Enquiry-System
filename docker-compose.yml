@@ -10,7 +10,7 @@ services:
   db:
     networks:
       mynetwork:
-    image: mysql:5.7
+    image: nflorina/idp-database
     ports:
       - "32000:3306"
     environment:

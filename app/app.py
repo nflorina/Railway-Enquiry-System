@@ -4,8 +4,12 @@ from flask import Flask, request
 from collections import defaultdict
 from copy import deepcopy
 from threading import Lock
+from prometheus_flask_exporter import PrometheusMetrics
 
 app = Flask(__name__)
+metrics = PrometheusMetrics(app)
+
+metrics.info('app_info', 'Application info', version='1.0.3')
 
 config = {
     'user': 'root',

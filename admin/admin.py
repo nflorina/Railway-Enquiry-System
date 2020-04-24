@@ -140,8 +140,14 @@ if __name__ == '__main__':
         print("- - - - - - - - #2 Adauga ruta CFR - - - - -  - - - - - - - - ")
         print("- - - - - - - - #3 Sterge ruta CFR - - - - - - - - - - - - - ")
         print("- - - - - - - - #4 Iesi din admin panel - - - - - - - - - - - ")
-        index = input("Operatia: ")
-        if (index.isnumeric() and (not 1 <= int(index) <= 4)) or (not index.isnumeric()):
-            print("\n. . . . . . . Introdu alt index! . . . . . . . .\n ")
-            continue
-        choose_operation(index)
+
+        try:
+            index = input("Operatia: ")
+            if (index.isnumeric() and (not 1 <= int(index) <= 4)) or (not index.isnumeric()):
+                print("\n. . . . . . . Introdu alt index! . . . . . . . .\n ")
+                continue
+            choose_operation(index)
+        except EOFError as e:
+            break
+
+

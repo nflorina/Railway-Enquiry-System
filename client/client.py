@@ -218,7 +218,8 @@ def choose_operation(idx, url):
 
        
 if __name__ == '__main__':
-    sys_url = sys.argv[1]
+    sys_url = sys.argv[1] if len(sys.argv) > 1 else '.'
+
     print_welcome()
     while 1:
             print("\n# # # # # # # Alege ce doresti sa faci:  # # # # # # #\n")
@@ -227,8 +228,12 @@ if __name__ == '__main__':
             print("- - - - - - - - #3 Rezervare bilet - - - - - - - - - - - - - - - ")
             print("- - - - - - - - #4 Cumparare bilet - - -  - - - - - - - - - - - -")
             print("- - - - - - - - #5 Iesire - - - - - - - - - - - - - - - -- - - - ")
-            index = input("Index is: ")
-            if (index.isnumeric() and (not 1 <= int(index) <= 5)) or (not index.isnumeric()):
-                print("\n# # # # # # # TRY AGAIN! Please enter a valid number! # # # # # #\n")
-                continue
-            choose_operation(index, sys_url)
+
+            try:
+                index = input("Index is: ")
+                if (index.isnumeric() and (not 1 <= int(index) <= 5)) or (not index.isnumeric()):
+                    print("\n# # # # # # # TRY AGAIN! Please enter a valid number! # # # # # #\n")
+                    continue
+                choose_operation(index, sys_url)
+            except EOFError as e:
+                break

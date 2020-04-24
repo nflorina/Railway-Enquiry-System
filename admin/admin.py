@@ -148,6 +148,6 @@ if __name__ == '__main__':
                 continue
             choose_operation(index)
         except EOFError as e:
-            break
+            continue
 
 

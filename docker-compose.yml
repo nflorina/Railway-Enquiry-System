@@ -23,6 +23,7 @@ services:
     networks:
       mynetwork:
     image: nflorina/idp-backend-server
+    container_name: app_run
     links:
       - db
     ports:
@@ -32,6 +33,8 @@ services:
     networks:
       mynetwork:
     image: nflorina/idp-admin
+    stdin_open: true
+    tty: true
     links:
       - db
     ports:
@@ -41,6 +44,8 @@ services:
     networks:
       mynetwork:
     image: nflorina/idp-client
+    stdin_open: true
+    tty: true
     ports:
       - "8080:80"
 

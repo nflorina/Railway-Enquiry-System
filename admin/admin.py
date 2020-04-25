@@ -1,4 +1,6 @@
 import mysql.connector
+import sleep
+
 config = {
     'user': 'root',
     'password': 'root',
@@ -133,6 +135,7 @@ def choose_operation(idx):
 
 
 if __name__ == '__main__':
+    time.sleep(20)
     print_welcome()
     while 1:
         print("\nSelecteaza una din operatiile de mai jos:\n")

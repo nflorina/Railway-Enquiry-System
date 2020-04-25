@@ -1,4 +1,4 @@
-import sys, json, requests
+import sys, json, requests, time
 
 # Get details such as source, destination etc from the user
 # to form a request.
@@ -218,8 +218,8 @@ def choose_operation(idx, url):
 
        
 if __name__ == '__main__':
-    sys_url = sys.argv[1] if len(sys.argv) > 1 else '.'
-
+    sys_url = "http://app_run:5000"
+    time.sleep(20)
     print_welcome()
     while 1:
             print("\n# # # # # # # Alege ce doresti sa faci:  # # # # # # #\n")

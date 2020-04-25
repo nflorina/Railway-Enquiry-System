@@ -1,5 +1,5 @@
 import mysql.connector
-import sleep
+import time
 
 config = {
     'user': 'root',
@@ -146,11 +146,11 @@ if __name__ == '__main__':
 
         try:
             index = input("Operatia: ")
+            #time.sleep(no_sec)
             if (index.isnumeric() and (not 1 <= int(index) <= 4)) or (not index.isnumeric()):
                 print("\n. . . . . . . Introdu alt index! . . . . . . . .\n ")
                 continue
             choose_operation(index)
         except EOFError as e:
-            break
-
-
+            print("EOF")
+            continue

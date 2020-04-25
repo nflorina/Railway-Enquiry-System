@@ -236,4 +236,4 @@ if __name__ == '__main__':
                     continue
                 choose_operation(index, sys_url)
             except EOFError as e:
-                continue
+                break

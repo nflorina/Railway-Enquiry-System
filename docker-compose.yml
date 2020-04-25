@@ -23,7 +23,7 @@ services:
     networks:
       mynetwork:
     image: nflorina/idp-backend-server
-    container_name: app_run
+    hostname: app
     links:
       - db
     ports:

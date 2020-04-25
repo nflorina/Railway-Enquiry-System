@@ -218,7 +218,7 @@ def choose_operation(idx, url):
 
        
 if __name__ == '__main__':
-    sys_url = "http://app_run:5000"
+    sys_url = "http://app:5000"
     time.sleep(20)
     print_welcome()
     while 1:

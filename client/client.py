@@ -11,10 +11,10 @@ def get_optimal_route_input():
     return source, destination, maximum_flights, day
 
 def get_route_info():
-    print("Please enter the route details.")
-    source = input("<source> : ")
-    destination = input("<destination> : ")
-    day = input("<departure day> : ")
+    print("Detalii calatorie: ")
+    source = input("<statie plecare> : ")
+    destination = input("<statie destinatie> : ")
+    day = input("<ziua plecarii> : ")
     return source, destination, day
 
 # Compute a request URL from de given details regarding the route.
@@ -148,11 +148,11 @@ def send_book_request(url, count_flights):
 # Manage the `book` request response received from the server.
 # Display the Reservation ID or a proper message in case of issue.
 def book_ticket(url):
-    count_flights = int(input("<how many flights you book> : "))
+    count_flights = int(input("<cate bilete:> : "))
     request = send_book_request(url, count_flights)
     if request.text == "NO_SEATS":
-        print("\n> > Unfortunatelly no seats are available or " +
-              "one of your flights was canceled! :( ")
+        print("\n> > Niciun loc liber! (ah, numai studentii sunt de vina) " +
+              "! :( ")
     else:
         print("\n > > Your reservation_ID is: " + request.text)
 
@@ -166,19 +166,19 @@ def send_buy_request(url, booking_id):
 # Manage a `buy` request response received from the server.
 # Display a proper message.
 def buy_ticket(url):
-    booking_id = input("<reservation id> : ")
+    booking_id = input("<id rezervare> : ")
     _ = input("<credit card number made of 4 digits> : ")
     request = send_buy_request(url, booking_id)
     if request.text == "NO_AVAILABLE_SEATS":
         print("\n > > Unfortunatelly it's already full!")
     elif request.text == "ID_NOT_BOOKED":
-        print("\n > > Flight not previously booked! CHECK YOUR " +
+        print("\n > > Route not previously booked! CHECK YOUR " +
               "RESERVATION ID! It must be like: " +
               "[Book: book_index] > > id > > id ...")
     elif request.text == "BOUGHT_ALREADY":
         print("\n > > Unfortunatelly it's already bought!")
     else:
-        print("\n> > This is your boarding pass: \n " + request.text)
+        print("\n> > Biletul: \n " + request.text)
 
 
 # Print a welcome board for the `client` page.

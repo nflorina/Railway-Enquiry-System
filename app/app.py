@@ -429,7 +429,7 @@ def buy_ticket() -> str:
         bought_seats += 1
         bought_seats_per_id[id] = bought_seats
 
-    boarding_pass = " << BOARDING PASS >>: "
+    boarding_pass = " <<  >>: "
     lock.acquire()
     for id in flight_ids:
         boarding_pass += "[<ID> : " + str(id) + "; " + \

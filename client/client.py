@@ -139,7 +139,7 @@ def filter(url, source, destination, day):
 def send_book_request(url, count_flights):
     req_url = url + "/bookTicket?"
     for x in range(count_flights):
-        flight = input("<flight id> : ")
+        flight = input("<numar tren CFR> : ")
         req_url += "flight=" + flight
         if x != count_flights - 1:
             req_url += "&"
@@ -154,7 +154,7 @@ def book_ticket(url):
         print("\n> > Niciun loc liber! (ah, numai studentii sunt de vina) " +
               "! :( ")
     else:
-        print("\n > > Your reservation_ID is: " + request.text)
+        print("\n > > Biletul tau: " + request.text)
 
 
 # Send a `buy` request to the server.
